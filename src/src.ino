@@ -31,7 +31,6 @@ void loop() {
   {
     if (pirState == HIGH)
     {
-      // we have just turned of
       Serial.println("Motion ended!");
       pirState = LOW;
     }
