@@ -38,7 +38,7 @@ LedCommands::LedCommands(const std::string& address, const std::string& service_
  * @return true if successful
  * @return false if not successful
  */
-const bool LedCommands::get_characteristic_handle(const std::string& address, const std::string& service_uuid, const std::string& characteristic_uuid)
+bool LedCommands::get_characteristic_handle(const std::string& address, const std::string& service_uuid, const std::string& characteristic_uuid)
 {
     NimBLEUUID serviceUuid(service_uuid);
     if (!this->m_client->connect(NimBLEAddress(address)))
@@ -127,7 +127,7 @@ std::vector<uint8_t> LedCommands::hex_string_to_bytes(const String& hex_string)
  * @return true if succeeded
  * @return false if not connected or otherwise cannot perform write
  */
-const bool LedCommands::send_command(const String& command)
+bool LedCommands::send_command(const String& command)
 {
     return m_characteristic->writeValue(LedCommands::hex_string_to_bytes(command));
 }
@@ -258,4 +258,9 @@ void LedCommands::set_color_for_rgb_mode(const int& r, const int& g, const int& 
 {
     String command = "7e000503" + String(r, HEX) + String(g, HEX) + String(b, HEX) + "00ef";
     this->send_command(command);
+}
+
+bool LedCommands::get_power_state()
+{
+    return false;
 }
