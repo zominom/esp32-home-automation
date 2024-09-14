@@ -1,10 +1,7 @@
 #include "LedCommands.h"
+#include "config.h"
 
 #define PIR_PIN 4
-
-const char* CONTROLLER_ADDR = "be:27:de:00:2e:ca";
-const char* SERVICE_UUID = "FFF0";
-const char* CHAR_UUID = "FFF3";
 
 int pirState = LOW;
 
